@@ -2,6 +2,8 @@ package com.sherlockoy.service.imp;
 
 import javax.annotation.Resource;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.sherlockoy.dao.IUserDAO;
 import com.sherlockoy.dao.imp.UserDAO;
 import com.sherlockoy.po.User;
@@ -28,15 +30,17 @@ public class UserService implements IUserService {
 		this.userDAO = userDAO;
 	}
 
+	@Transactional
 	// 注册防止重复用户名
 	public boolean isUserExist(String userName) {
 		// TODO Auto-generated method stub
-		if (userDAO.getUserByUserName(userName) == null) {
+		if (this.userDAO.getUserByUserName(userName) == null) {
 			return false;
 		} else
 			return true;
 	}
 
+	@Transactional
 	// 注册新用户
 	public boolean registerUser(User user) {
 		// TODO Auto-generated method stub
@@ -45,15 +49,16 @@ public class UserService implements IUserService {
 		if (judge) {
 			return false;
 		} else {
-			userDAO.addUser(user);
+			this.userDAO.addUser(user);
 			return true;
 		}
 	}
 
+	@Transactional
 	// 验证登录
 	public boolean validateUser(String userName, String passWord) {
 		// TODO Auto-generated method stub
-		User user = userDAO.getUserByUserName(userName);
+		User user = this.userDAO.getUserByUserName(userName);
 		if (user != null) {
 			if (user.getPassWord().equals(passWord)) {
 				return true;
@@ -65,9 +70,10 @@ public class UserService implements IUserService {
 		}
 	}
 
+	@Transactional(readOnly = true)
 	public User getUserInfo(String userName) {
 		// TODO Auto-generated method stub
-		User user = userDAO.getUserByUserName(userName);
+		User user = this.userDAO.getUserByUserName(userName);
 		User userInfo = new User();
 
 		userInfo.setUserId(user.getUserId());

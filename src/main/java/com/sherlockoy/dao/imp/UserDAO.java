@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,10 +12,12 @@ import org.hibernate.Transaction;
 
 import com.sherlockoy.dao.IUserDAO;
 import com.sherlockoy.po.User;
+import com.sherlockoy.util.HibernateUtil;
 
 public class UserDAO implements IUserDAO {
 
-	private SessionFactory sessionFactory=null;
+	// private SessionFactory sessionFactory=HibernateUtil.getSessionFactory();
+	private SessionFactory sessionFactory = null;
 
 	@Resource(name = "sessionFactory")
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -31,7 +34,7 @@ public class UserDAO implements IUserDAO {
 		Session session = null;
 		Transaction transaction = null;
 		try {
-			session = sessionFactory.openSession();
+			session = this.sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			session.save(user);
 			transaction.commit();
@@ -94,7 +97,6 @@ public class UserDAO implements IUserDAO {
 		Query query = session.createQuery("from User where userName = ?");
 		query.setString(0, userName);
 		List list = query.list();
-		session.close();
 		if (list.size() > 0) {
 			return (User) list.get(0);
 		} else
@@ -105,27 +107,27 @@ public class UserDAO implements IUserDAO {
 	 * for the test
 	 */
 
-	 public static void main(String[] args) {
-	
-	 User user = new User();
-	 user.setUserName("userName");
-	 user.setPassWord("123");
-	
-	 UserDAO userDAO = new UserDAO();
-	 userDAO.addUser(user);
-	
-	 String theId = user.getUserId();
-	 User beforeUpdatedUser = userDAO.getUserById(theId);
-	 System.out.println("before update is " + beforeUpdatedUser);
-	
-	 User updatedUser = userDAO.getUserById(theId);
-	 updatedUser.setUserName("testupdate2");
-	 userDAO.updateUser(updatedUser);
-	 System.out.println("updated user is " + updatedUser);
-	
-	 User fetchUser = userDAO.getUserByUserName("testupdate");
-	 System.out.println("fetched user is " + fetchUser);
-	
-	 }
+	public static void main(String[] args) {
+
+		User user = new User();
+		user.setUserName("userName");
+		user.setPassWord("123");
+
+		UserDAO userDAO = new UserDAO();
+		userDAO.addUser(user);
+
+		String theId = user.getUserId();
+		User beforeUpdatedUser = userDAO.getUserById(theId);
+		System.out.println("before update is " + beforeUpdatedUser);
+
+		User updatedUser = userDAO.getUserById(theId);
+		updatedUser.setUserName("testupdate2");
+		userDAO.updateUser(updatedUser);
+		System.out.println("updated user is " + updatedUser);
+
+		User fetchUser = userDAO.getUserByUserName("testupdate");
+		System.out.println("fetched user is " + fetchUser);
+
+	}
 
 }

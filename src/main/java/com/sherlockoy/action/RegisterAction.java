@@ -19,8 +19,8 @@ public class RegisterAction extends ActionSupport {
 	private String userName;
 	private String passWord;
 	private String email;
-	private User user = null;
-	private UserService userService = null;
+	private User user = new User();
+	private IUserService userService = null;
 	private SessionFactory sessionFactory = null;
 
 	public String getUserId() {
@@ -74,8 +74,9 @@ public class RegisterAction extends ActionSupport {
 	public String execute() throws Exception {
 
 		BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
-		userService = (UserService) factory.getBean("userService");
-		if (userService.isUserExist(userName)) {
+		userService = (IUserService) factory.getBean("userService");
+		boolean type = userService.isUserExist(userName);
+		if (type) {
 			return "USEREXIST";
 		} else {
 			if (userName == null || passWord == null) {
