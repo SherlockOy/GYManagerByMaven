@@ -1,5 +1,7 @@
 package com.sherlockoy.service;
 
+import java.util.List;
+
 import com.sherlockoy.dao.imp.UserDAO;
 import com.sherlockoy.po.User;
 
@@ -15,8 +17,10 @@ public interface IUserService {
 
 	// 验证登录
 	public boolean validateUser(String userName, String passWord);
+
 	// 查询订单，返回订单列表
 
 	public User getUserInfo(String userName);
-	
+
+	public List<User> getAll();
 }

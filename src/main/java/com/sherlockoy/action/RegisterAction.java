@@ -75,8 +75,8 @@ public class RegisterAction extends ActionSupport {
 
 		BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 		userService = (IUserService) factory.getBean("userService");
-		boolean type = userService.isUserExist(userName);
-		if (type) {
+		
+		if (userService.isUserExist(userName)) {
 			return "USEREXIST";
 		} else {
 			if (userName == null || passWord == null) {

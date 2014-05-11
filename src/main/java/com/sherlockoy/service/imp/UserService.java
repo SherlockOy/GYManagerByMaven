@@ -1,5 +1,7 @@
 package com.sherlockoy.service.imp;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -82,6 +84,11 @@ public class UserService implements IUserService {
 		return userInfo;
 	}
 
+	public List<User> getAll(){
+		List<User> users = this.userDAO.getAllUsers();
+		return users;
+	}
+	
 	// public static void main(String[] args) {
 	//
 	// UserService userService = new UserService();

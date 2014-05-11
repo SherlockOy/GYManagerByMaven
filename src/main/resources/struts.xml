@@ -13,14 +13,21 @@
 			<result>/main.jsp</result>
 		</action>
 
-		<action name="login" class="com.sherlockoy.action.LoginAction" method="execute">
+		<action name="login" class="com.sherlockoy.action.LoginAction"
+			method="execute">
 			<result name="SUCCESS">/welcome.jsp</result>
 			<result name="ERROR">/index.jsp</result>
 		</action>
 
-		<action name="register" class="com.sherlockoy.action.RegisterAction" method="execute">
+		<action name="register" class="com.sherlockoy.action.RegisterAction"
+			method="execute">
 			<result name="RegisterDone">/welcome.jsp</result>
 			<result name="RegisterError">/index.jsp</result>
+		</action>
+
+		<action name="struts_tags" class="com.sherlockoy.action.TestStrutsAction"
+			method="execute">
+			<result name="DisplayAllUsers">/TestStrutsTagsResult.jsp</result>
 		</action>
 
 	</package>

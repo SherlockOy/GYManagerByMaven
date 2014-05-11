@@ -103,31 +103,39 @@ public class UserDAO implements IUserDAO {
 			return null;
 	}
 
+	// 获取所有用户对象
+	public List<User> getAllUsers() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from User");
+		List<User> list = query.list();
+		return list;
+	}
+
 	/*
 	 * for the test
 	 */
 
-	public static void main(String[] args) {
-
-		User user = new User();
-		user.setUserName("userName");
-		user.setPassWord("123");
-
-		UserDAO userDAO = new UserDAO();
-		userDAO.addUser(user);
-
-		String theId = user.getUserId();
-		User beforeUpdatedUser = userDAO.getUserById(theId);
-		System.out.println("before update is " + beforeUpdatedUser);
-
-		User updatedUser = userDAO.getUserById(theId);
-		updatedUser.setUserName("testupdate2");
-		userDAO.updateUser(updatedUser);
-		System.out.println("updated user is " + updatedUser);
-
-		User fetchUser = userDAO.getUserByUserName("testupdate");
-		System.out.println("fetched user is " + fetchUser);
-
-	}
+	// public static void main(String[] args) {
+	//
+	// User user = new User();
+	// user.setUserName("userName");
+	// user.setPassWord("123");
+	//
+	// UserDAO userDAO = new UserDAO();
+	// userDAO.addUser(user);
+	//
+	// String theId = user.getUserId();
+	// User beforeUpdatedUser = userDAO.getUserById(theId);
+	// System.out.println("before update is " + beforeUpdatedUser);
+	//
+	// User updatedUser = userDAO.getUserById(theId);
+	// updatedUser.setUserName("testupdate2");
+	// userDAO.updateUser(updatedUser);
+	// System.out.println("updated user is " + updatedUser);
+	//
+	// User fetchUser = userDAO.getUserByUserName("testupdate");
+	// System.out.println("fetched user is " + fetchUser);
+	//
+	// }
 
 }
