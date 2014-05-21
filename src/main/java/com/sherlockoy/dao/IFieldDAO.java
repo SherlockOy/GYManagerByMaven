@@ -7,10 +7,10 @@ import com.sherlockoy.po.Field;
 public interface IFieldDAO {
 
 	// 添加场地
-	public void addField();
+	public void addField(Field field);
 
 	// 删除场地
-	public void deleteField();
+	public void deleteField(Field field);
 
 	// 获取场地
 	public ArrayList<Field> getField(String fieldType, String date);
