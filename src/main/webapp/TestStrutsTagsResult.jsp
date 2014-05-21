@@ -11,8 +11,8 @@
 <body>
 	<p>
 	<% int i = 0; %>
-	<s:iterator value="users" id="usrs">
-		<h3><s:property value="#usrs"/><%=i %></h3>
+	<s:iterator value="users" var="usrs">
+		<h3><s:property value="#usrs.userName"/><%=i %></h3>
 		<% i=i+1; %>
 	</s:iterator>
 	</p>

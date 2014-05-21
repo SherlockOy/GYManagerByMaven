@@ -15,7 +15,7 @@ import com.sherlockoy.service.IUserService;
 
 public class TestStrutsAction extends ActionSupport {
 
-	List<String> users = new ArrayList<String>();
+	ArrayList<User> users = new ArrayList<User>();
 	IUserService userService = null;
 //	Map<String, User> informations = new HashMap<String, User>();
 //	int[] testArray = new int[3];
@@ -26,14 +26,12 @@ public class TestStrutsAction extends ActionSupport {
 				"applicationContext.xml");
 		userService = (IUserService) factory.getBean("userService");
 
-		for(int i = 0; i<3;i++){
-			users.add("user"+i);
-		}
+//		for(int i = 0; i<3;i++){
+//			users.add("user"+i);
+//		}
 		
-//		users = userService.getAll();
-//		// testArray[0] = 1;
-//		// testArray[1] = 2;
-//		// testArray[2] = 3;
+		users = (ArrayList<User>) userService.getAll();
+
 //
 //		for (int i = 0; i < users.size(); i++) {
 //			String userId = users.get(i).getUserId();
@@ -45,11 +43,11 @@ public class TestStrutsAction extends ActionSupport {
 
 	}
 
-	public List<String> getUsers() {
+	public ArrayList<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<String> users) {
+	public void setUsers(ArrayList<User> users) {
 		this.users = users;
 	}
 
