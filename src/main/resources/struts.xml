@@ -30,6 +30,11 @@
 			<result name="DisplayAllUsers">/TestStrutsTagsResult.jsp</result>
 		</action>
 
+		<action name="badminton_display" class="com.sherlockoy.action.FieldAction"
+			method="fieldDisplay">
+			<result name="DisplayBadminton">/Badminton.jsp</result>
+		</action>
+
 	</package>
 
 </struts>

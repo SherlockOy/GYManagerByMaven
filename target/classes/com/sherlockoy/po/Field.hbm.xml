@@ -16,20 +16,20 @@
 		<property name="date" type="java.lang.String" column="date"
 			length="45" not-null="true" />
 		<property name="timeSec1" type="java.lang.Integer" column="timeSec1"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 		<property name="timeSec2" type="java.lang.Integer" column="timeSec2"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 		<property name="timeSec3" type="java.lang.Integer" column="timeSec3"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 		<property name="timeSec4" type="java.lang.Integer" column="timeSec4"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 		<property name="timeSec5" type="java.lang.Integer" column="timeSec5"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 		<property name="timeSec6" type="java.lang.Integer" column="timeSec6"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 		<property name="timeSec7" type="java.lang.Integer" column="timeSec7"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 		<property name="timeSec8" type="java.lang.Integer" column="timeSec8"
-			length="256" not-null="true" />
+			length="11" not-null="true" />
 	</class>
 </hibernate-mapping>

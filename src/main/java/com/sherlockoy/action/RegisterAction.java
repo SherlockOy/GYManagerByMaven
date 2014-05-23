@@ -21,8 +21,6 @@ public class RegisterAction extends ActionSupport {
 	private String email;
 	private User user = new User();
 	private IUserService userService = null;
-	private SessionFactory sessionFactory = null;
-
 	public String getUserId() {
 		return userId;
 	}

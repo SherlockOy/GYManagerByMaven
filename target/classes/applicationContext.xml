@@ -33,6 +33,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/sherlockoy/po/User.hbm.xml</value>
+				<value>com/sherlockoy/po/Field.hbm.xml</value>
 			</list>
 		</property>
 		<property name="packagesToScan">
@@ -69,9 +70,9 @@
 	<!-- ensure that the above transactional advice runs for any execution of 
 		an operation defined by the FooService interface -->
 	<aop:config>
-		<aop:pointcut id="userServiceMethods"
+		<aop:pointcut id="ServiceMethods"
 			expression="execution(* com.sherlockoy.service..*.*(..))" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceMethods" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="ServiceMethods" />
 	</aop:config>
 	<!-- 开启事务管理 -->
 	<bean id="txManager"
@@ -91,10 +92,16 @@
 	<bean id="userService" class="com.sherlockoy.service.imp.UserService">
 		<property name="userDAO" ref="userDAO" />
 	</bean>
-	<!-- <bean id="registerAction" class="com.sherlockoy.action.RegisterAction"
-		scope="prototype">
-		<property name="userService" ref="userService" />
-	</bean> -->
+
+	<bean id="fieldDAO" class="com.sherlockoy.dao.imp.FieldDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="fieldService" class="com.sherlockoy.service.imp.FieldService">
+		<property name="fieldDAO" ref="fieldDAO" />
+	</bean>
+
+	<!-- <bean id="registerAction" class="com.sherlockoy.action.RegisterAction" 
+		scope="prototype"> <property name="userService" ref="userService" /> </bean> -->
 	<bean id="personDao" class="com.sherlockoy.dao.imp.PersonDao"></bean>
 
 	<bean id="personService" class="com.sherlockoy.service.imp.PersonService">
