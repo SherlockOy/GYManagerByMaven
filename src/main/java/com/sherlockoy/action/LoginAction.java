@@ -2,6 +2,9 @@ package com.sherlockoy.action;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sherlockoy.po.User;
@@ -66,6 +69,10 @@ public class LoginAction extends ActionSupport {
 	}
 
 	public String execute() throws Exception {
+		
+		BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
+		userService = (IUserService) factory.getBean("userService");
+		
 		if (userService.validateUser(userName, passWord)) {
 			User userInfo = userService.getUserInfo(userName);
 			Map session = ActionContext.getContext().getSession();

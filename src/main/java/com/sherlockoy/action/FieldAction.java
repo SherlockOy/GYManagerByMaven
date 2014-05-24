@@ -25,7 +25,14 @@ public class FieldAction extends ActionSupport {
 
 		// 获取场地信息
 		resultFields = fieldService.getTargetFields(fieldType, selectedDate);
-		return "DisplayBadminton";
+		if (fieldType.equals("badminton"))
+			return "DisplayBadminton";
+		else if (fieldType.equals("pingpong"))
+			return "DisplayPingPong";
+		else if (fieldType.equals("tennis"))
+			return "DisplayTennis";
+		else
+			return "DisplayError";
 	}
 
 	public String fieldOrder() {

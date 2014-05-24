@@ -5,6 +5,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
 public class DataBase {
+
 	static String driverClass = "com.mysql.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/GYManager";
 	static String user = "root";
@@ -23,7 +24,8 @@ public class DataBase {
 					Statement stmt = (Statement) conn.createStatement();
 					String sql = "INSERT INTO `GYManager`.`Field` "
 							+ "(`fieldNum`, `fieldType`, `date`) "
-							+ "VALUES ('"+j+"', 'pingpong', '2014-5-"+i+"');";
+							+ "VALUES ('" + j + "', 'pingpong', '2014-5-" + i
+							+ "');";
 					stmt.execute(sql);
 				} catch (Exception ex) {
 					ex.printStackTrace();
