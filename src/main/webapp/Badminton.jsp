@@ -66,7 +66,7 @@
 }
 
 <
-style type ="text/css"> /*<![CDATA[*/ a,label {
+style type ="text /css"> /*<![CDATA[*/ a,label {
 	display: block;
 	width: 25px;
 	height: 25px;
@@ -113,7 +113,7 @@ a#b {
 
 
 		<form id="form_badminton" name="form_badminton"
-			action="process_badminton.jsp" method="post">
+			action="badminton_order.action" method="post">
 
 			<div id="apDiv4">
 				<table layout="fixed" cellSpacing="5" align="center">

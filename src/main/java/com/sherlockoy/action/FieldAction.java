@@ -81,9 +81,7 @@ public class FieldAction extends ActionSupport {
 		this.fieldType = fieldType;
 
 		// 调用display()，进入现实场地
-		fieldDisplay();
-
-		return null;
+		return fieldDisplay();
 	}
 
 	public IFieldService getFieldService() {
