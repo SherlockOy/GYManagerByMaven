@@ -4,18 +4,20 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.sherlockoy.po.Order" table="Order">
-        <id name="orderId" length="32" column="orderId" type="java.lang.String">
-            <generator class="uuid.hex">
-            </generator>
-        </id>
-        <property name="timeSection" type="java.lang.String" column="timeSection"
-            length="45" not-null="false" />
-        <property name="date" type="java.lang.String" column="date"
-            length="45" not-null="true" />
-        <property name="item" type="java.lang.String" column="item"
-            length="45" not-null="false" />
-        <property name="subscriber" type="java.lang.String" column="subscriber"
-            length="45" not-null="false" />
-    </class>
+	<class name="com.sherlockoy.po.Order" table="Order">
+		<id name="orderId" length="32" column="orderId" type="java.lang.String">
+			<generator class="uuid.hex">
+			</generator>
+		</id>
+		<property name="subscriber" type="java.lang.String" column="subscriber"
+			length="45" not-null="false" />
+		<property name="date" type="java.lang.String" column="date"
+			length="45" not-null="true" />
+		<property name="timeSection" type="java.lang.String" column="timeSection"
+			length="45" not-null="false" />
+		<property name="item" type="java.lang.String" column="item"
+			length="45" not-null="false" />
+		<property name="fieldNum" type="java.lang.String" column="fieldNum"
+			length="45" not-null="false" />
+	</class>
 </hibernate-mapping>

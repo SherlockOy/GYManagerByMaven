@@ -34,6 +34,7 @@
 			<list>
 				<value>com/sherlockoy/po/User.hbm.xml</value>
 				<value>com/sherlockoy/po/Field.hbm.xml</value>
+				<value>com/sherlockoy/po/Order.hbm.xml</value>
 			</list>
 		</property>
 		<property name="packagesToScan">
@@ -98,6 +99,13 @@
 	</bean>
 	<bean id="fieldService" class="com.sherlockoy.service.imp.FieldService">
 		<property name="fieldDAO" ref="fieldDAO" />
+	</bean>
+	
+	<bean id="orderDAO" class="com.sherlockoy.dao.imp.OrderDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="orderService" class="com.sherlockoy.service.imp.OrderService">
+		<property name="orderDAO" ref="orderDAO" />
 	</bean>
 
 	<!-- <bean id="registerAction" class="com.sherlockoy.action.RegisterAction" 

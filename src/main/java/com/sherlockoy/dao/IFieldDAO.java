@@ -17,4 +17,7 @@ public interface IFieldDAO {
 
 	// 更新场地
 	public void updateField(Field field);
+
+	// 根据要求获得特定场地
+	public Field getFieldByRules(String fieldType, String date, String fieldNum);
 }

@@ -34,6 +34,11 @@
 			method="fieldDisplay">
 			<result name="DisplayBadminton">/Badminton.jsp</result>
 		</action>
+		
+		<action name="badminton_order" class="com.sherlockoy.action.FieldAction"
+			method="fieldOrder">
+			<result name="DisplayBadminton">/Badminton.jsp</result>
+		</action>
 
 	</package>
 

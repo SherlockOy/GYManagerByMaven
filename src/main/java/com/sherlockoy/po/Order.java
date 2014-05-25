@@ -6,6 +6,7 @@ public class Order {
 	private String date;
 	private String item;
 	private String subscriber;
+	private String fieldNum;
 
 	public Order() {
 	}
@@ -48,6 +49,14 @@ public class Order {
 
 	public void setSubscriber(String subscriber) {
 		this.subscriber = subscriber;
+	}
+
+	public String getFieldNum() {
+		return fieldNum;
+	}
+
+	public void setFieldNum(String fieldNum) {
+		this.fieldNum = fieldNum;
 	}
 
 }

@@ -83,6 +83,21 @@ public class FieldDAO implements IFieldDAO {
 		session.close();
 	}
 
+	public Field getFieldByRules(String fieldType, String date, String fieldNum) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session
+				.createQuery("from Field where fieldType = :fieldType and date = :date and fieldNum = :fieldNum");
+		query.setString("fieldType", fieldType);
+		query.setString("date", date);
+		query.setString("fieldNum", fieldNum);
+		ArrayList<Field> list = (ArrayList<Field>) query.list();
+		if (list.size() > 0) {
+			return list.get(0);
+		} else
+			return null;
+	}
+
 	// public static void main(String[] args) {
 	// for (int i = 1; i <= 31; i++) {
 	// for (int j = 1; j <= 4; j++) {
