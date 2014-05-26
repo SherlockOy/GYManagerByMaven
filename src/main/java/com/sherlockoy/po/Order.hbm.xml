@@ -4,8 +4,8 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.sherlockoy.po.Order" table="Check">
-		<id name="orderId" length="32" column="checkId" type="java.lang.String">
+	<class name="com.sherlockoy.po.Order" table="Indent">
+		<id name="indentId" length="32" column="indentId" type="java.lang.String">
 			<generator class="uuid.hex">
 			</generator>
 		</id>

@@ -1,6 +1,6 @@
 package com.sherlockoy.po;
 
-public class Order {
+public class Indent {
 	private String indentId;
 	private String timeSection;
 	private String dateSelected;
@@ -9,7 +9,12 @@ public class Order {
 	private String fieldNum;
 	private String subscriberId;
 
-	public Order() {
+	public String getIndentId() {
+		return indentId;
+	}
+
+	public void setIndentId(String indentId) {
+		this.indentId = indentId;
 	}
 
 	public String getTimeSection() {
@@ -18,6 +23,14 @@ public class Order {
 
 	public void setTimeSection(String timeSection) {
 		this.timeSection = timeSection;
+	}
+
+	public String getDateSelected() {
+		return dateSelected;
+	}
+
+	public void setDateSelected(String dateSelected) {
+		this.dateSelected = dateSelected;
 	}
 
 	public String getItem() {
@@ -51,21 +64,4 @@ public class Order {
 	public void setSubscriberId(String subscriberId) {
 		this.subscriberId = subscriberId;
 	}
-
-	public String getDateSelected() {
-		return dateSelected;
-	}
-
-	public void setDateSelected(String dateSelected) {
-		this.dateSelected = dateSelected;
-	}
-
-	public String getIndentId() {
-		return indentId;
-	}
-
-	public void setIndentId(String indentId) {
-		this.indentId = indentId;
-	}
-
 }
