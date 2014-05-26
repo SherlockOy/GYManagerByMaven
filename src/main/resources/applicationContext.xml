@@ -106,6 +106,7 @@
 	</bean>
 	<bean id="orderService" class="com.sherlockoy.service.imp.OrderService">
 		<property name="orderDAO" ref="orderDAO" />
+		<property name="fieldDAO" ref="fieldDAO" />
 	</bean>
 
 	<!-- <bean id="registerAction" class="com.sherlockoy.action.RegisterAction" 

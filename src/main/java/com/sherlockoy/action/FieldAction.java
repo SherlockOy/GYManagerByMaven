@@ -3,6 +3,9 @@ package com.sherlockoy.action;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpRequest;
@@ -23,7 +26,7 @@ public class FieldAction extends ActionSupport {
 	private String fieldType;
 	private String selectedDate;
 
-	private WebRequest request;
+	private HttpServletRequest request = ServletActionContext.getRequest();
 
 	public String fieldDisplay() {
 
@@ -66,7 +69,8 @@ public class FieldAction extends ActionSupport {
 		String fieldType = (String) session.get("fieldType");
 		String userName = userInfo.getUserName();
 		// 获取orders对象
-		String[] parameters = request.getParameterValues("order");
+		String[] parameters = new String[32];
+		parameters = request.getParameterValues("order");
 
 		// 初始化ArrayList
 		ArrayList<Order> orders = new ArrayList<Order>();
