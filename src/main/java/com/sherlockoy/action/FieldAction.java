@@ -68,6 +68,7 @@ public class FieldAction extends ActionSupport {
 		User userInfo = (User) session.get("userInfo");
 		String fieldType = (String) session.get("fieldType");
 		String userName = userInfo.getUserName();
+		String subscriberId = userInfo.getUserId();
 		// 获取orders对象
 		String[] parameters = new String[32];
 		parameters = request.getParameterValues("order");
@@ -77,7 +78,7 @@ public class FieldAction extends ActionSupport {
 
 		// 订场的业务逻辑
 		orders = orderService.processOrders(parameters, date, userName,
-				fieldType);
+				fieldType, subscriberId);
 		orderService.submitOrders(orders);
 
 		// 准备调用display()

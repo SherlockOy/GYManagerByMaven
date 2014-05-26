@@ -19,10 +19,9 @@ public class OrderDAO implements IOrderDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void createOrder(Order toSubmit) {
+	public void createOrder(Order order) {
 		// TODO Auto-generated method stub
-		Order order = new Order();
-		order = toSubmit;
+		
 		Session session = null;
 		Transaction transaction = null;
 		try {
@@ -35,6 +34,8 @@ public class OrderDAO implements IOrderDAO {
 			transaction.rollback();
 		}
 		session.close();
+		
+		
 	}
 
 	public void deleteOrder(Order toDelete) {

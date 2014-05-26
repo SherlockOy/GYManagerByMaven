@@ -4,20 +4,22 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.sherlockoy.po.Order" table="Order">
-		<id name="orderId" length="32" column="orderId" type="java.lang.String">
+	<class name="com.sherlockoy.po.Order" table="Check">
+		<id name="orderId" length="32" column="checkId" type="java.lang.String">
 			<generator class="uuid.hex">
 			</generator>
 		</id>
 		<property name="subscriber" type="java.lang.String" column="subscriber"
 			length="45" not-null="false" />
-		<property name="date" type="java.lang.String" column="date"
+		<property name="dateSelected" type="java.lang.String" column="dateSelected"
 			length="45" not-null="true" />
 		<property name="timeSection" type="java.lang.String" column="timeSection"
 			length="45" not-null="false" />
 		<property name="item" type="java.lang.String" column="item"
 			length="45" not-null="false" />
 		<property name="fieldNum" type="java.lang.String" column="fieldNum"
+			length="45" not-null="false" />
+		<property name="subscriberId" type="java.lang.String" column="subscriberId"
 			length="45" not-null="false" />
 	</class>
 </hibernate-mapping>

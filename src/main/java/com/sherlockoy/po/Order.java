@@ -3,10 +3,11 @@ package com.sherlockoy.po;
 public class Order {
 	private String orderId;
 	private String timeSection;
-	private String date;
+	private String dateSelected;
 	private String item;
 	private String subscriber;
 	private String fieldNum;
+	private String subscriberId;
 
 	public Order() {
 	}
@@ -25,14 +26,6 @@ public class Order {
 
 	public void setTimeSection(String timeSection) {
 		this.timeSection = timeSection;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
 	}
 
 	public String getItem() {
@@ -57,6 +50,22 @@ public class Order {
 
 	public void setFieldNum(String fieldNum) {
 		this.fieldNum = fieldNum;
+	}
+
+	public String getSubscriberId() {
+		return subscriberId;
+	}
+
+	public void setSubscriberId(String subscriberId) {
+		this.subscriberId = subscriberId;
+	}
+
+	public String getDateSelected() {
+		return dateSelected;
+	}
+
+	public void setDateSelected(String dateSelected) {
+		this.dateSelected = dateSelected;
 	}
 
 }

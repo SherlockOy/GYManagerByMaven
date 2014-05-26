@@ -16,8 +16,8 @@ public class OrderService implements IOrderService {
 	private IFieldDAO fieldDAO = null;
 
 	@Transactional
-	public ArrayList<Order> processOrders(String[] parameters, String date,
-			String subscriber, String item) {
+	public ArrayList<Order> processOrders(String[] parameters, String dateSelected,
+			String subscriber, String item, String subscriberId) {
 		// TODO Auto-generated method stub
 		ArrayList<Order> orders = new ArrayList<Order>();
 		int length = parameters.length;
@@ -31,11 +31,11 @@ public class OrderService implements IOrderService {
 			char switcher = timeSectionChoosen.charAt(0);
 			String timeSection = "";
 
-			//根据要求获取场地对象
+			// 根据要求获取场地对象
 			Field field = new Field();
-			field = fieldDAO.getFieldByRules(item, date, fieldNum);
+			field = fieldDAO.getFieldByRules(item, dateSelected, fieldNum);
 
-			//按规则解析参数，不同字母代表不同的时间段，对所获得的field对象进行更新
+			// 按规则解析参数，不同字母代表不同的时间段，对所获得的field对象进行更新
 			switch (switcher) {
 			case 'a':
 				field.setTimeSec1(0);
@@ -75,7 +75,9 @@ public class OrderService implements IOrderService {
 
 			// 处理完成之后将数据库中场地数据进行修改，然后存入list
 			fieldDAO.updateField(field);
-			orders.add(buildOrder(subscriber, date, item, timeSection));
+
+			orders.add(buildOrder(subscriber, dateSelected, item, fieldNum,
+					timeSection, subscriberId));
 
 		}
 		return orders;
@@ -85,26 +87,27 @@ public class OrderService implements IOrderService {
 	// 调用OrderService和FieldService对处理好的orders
 	public void submitOrders(ArrayList<Order> orders) {
 		// TODO Auto-generated method stub
-		for(int i = 0; i < orders.size();i++){
+		for (int i = 0; i < orders.size(); i++) {
 			orderDAO.createOrder(orders.get(i));
 		}
 	}
 
-	public Order buildOrder(String subscriber, String date, String item,
-			String timeSection) {
+	public Order buildOrder(String subscriber, String dateSelected, String item,
+			String fieldNum, String timeSection, String subscriberId) {
 
-		//各种Set
+		// 各种Set
 		Order order = new Order();
 		order.setSubscriber(subscriber);
-		order.setDate(date);
+		order.setDateSelected(dateSelected);
 		order.setItem(item);
 		order.setTimeSection(timeSection);
+		order.setFieldNum(fieldNum);
+		order.setSubscriberId(subscriberId);
 
 		return order;
 	}
 
-	
-	//getters and setters
+	// getters and setters
 	public IOrderDAO getOrderDAO() {
 		return orderDAO;
 	}

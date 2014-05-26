@@ -10,7 +10,7 @@ import com.sherlockoy.po.User;
 public interface IOrderService {
 	// 处理前端传回的Parameters，并解析成对应的场地信息生成一个Order对象
 	public ArrayList<Order> processOrders(String[] parameters, String date,
-			String subscriber, String item);
+			String subscriber, String item,String subscriberId);
 
 	// 提交订单
 	public void submitOrders(ArrayList<Order> orders);
